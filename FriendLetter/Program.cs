@@ -3,24 +3,27 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace FriendLetter
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+      WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllersWithViews();
+      builder.Services.AddControllersWithViews();
 
-            WebApplication app = builder.Build();
+      WebApplication app = builder.Build();
 
-            app.UseRouting();
+      // new code!
+      // app.UseDeveloperExceptionPage(); only enable in development
 
-            app.MapControllerRoute(
-              name: "default",
-              pattern: "{controller=Home}/{action=Index}/{id?}"
-            );
+      app.UseRouting();
 
-            app.Run();
-        }
+      app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}"
+      );
+
+      app.Run();
     }
+  }
 }
