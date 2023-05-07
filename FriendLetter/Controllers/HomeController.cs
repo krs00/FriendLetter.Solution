@@ -16,5 +16,13 @@ namespace FriendLetter.Controllers
     // Notice the changes below!
     public ActionResult Letter() { return View(); }
 
+      [Route("/")]
+    public ActionResult Letter()
+    {
+      LetterVariable myLetterVariable = new LetterVariable();
+      myLetterVariable.Recipient = "Lina";
+      return View(myLetterVariable);
+    }
+
   }
 }
